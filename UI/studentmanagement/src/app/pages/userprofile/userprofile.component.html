@@ -1,0 +1,238 @@
+<section id="userProfile" >
+<div fxLayout="row" fxLayoutGap="10px" >
+<div fxLayout="column" fxFlex="25">
+    <mat-card>
+        <mat-card-content>
+            <div class="profile-picture">
+                <img mat-card-md-image [src]="imageurl" alt="" style="width: 250px;height: 350px;">
+            </div>
+            <input #fileInput id="fileInput" type='file' (click)="fileInput.value = null" value="" (change)="onSelectFile($any($event.target).files)">
+            <button class="btn btn-default" *ngIf="imageurl" (click)="delete()">delete</button>
+      <p class="user-name">
+       User Name: &nbsp; &nbsp;{{user_name}}
+        </p>
+        </mat-card-content>
+    </mat-card>
+</div>
+ <div fxLayout="column" fxFlex="75" >
+    <mat-card>
+        <mat-card-content style="width:100wh;height:84vh">
+            <div >
+              </div>
+              <mat-tab-group >
+                <mat-tab label="Profile" color="accent">
+                            <div class="profile-about">
+                                <div class="about-title">
+                                    <span class="material-icons">person &nbsp;</span><h1 class="">About</h1>
+                                </div>
+                            </div>  
+                            <div class="user-form">
+                                <!-- <h1 class="user-form-title">Students Edit User Profile</h1> -->
+                                <form action="" #updateUserProfile="ngForm" (ngSubmit)="editUserProfile(updateUserProfile.value)">
+                                  <mat-dialog-content>
+                                    <div fxLayout="row" fxLayoutGap="20px">
+                                      <div fxLayout="column" fxFlex="35">
+                                        <mat-form-field>
+                                          <input type="text" matInput [(ngModel)]="first_name"  name="first_name" placeholder="Enter your first name">
+                                        </mat-form-field>
+                                      </div>
+                                      <div fxLayout="column" fxFlex="35">
+                                        <mat-form-field >
+                                          <input type="text" matInput [(ngModel)]="last_name"  name="last_name" placeholder="Enter your last name">
+                                        </mat-form-field>
+                                      </div>
+                                      <div fxLayout="column" fxFlex="30">
+                                        <mat-form-field >
+                                          <input type="text" matInput [(ngModel)]="contact_no"  name="contact_no" placeholder="Enter your contact no"> 
+                                          </mat-form-field>
+                                    </div>
+                                    </div>
+                                    <div fxLayout="row" fxLayoutGap="20px">
+                                      <div fxLayout="column" fxFlex="35">
+                                        <mat-form-field>
+                                          <input type="text" matInput [(ngModel)]="cnic_no"  name="cnic_no" placeholder="Enter your CNIC No.">
+                                        </mat-form-field>
+                                      </div>
+                                      <div fxLayout="column" fxFlex="35">
+                                        <mat-form-field >
+                                          <input type="text" matInput [(ngModel)]="permanent_address"  name="permanent_address" placeholder="Enter your permanent address">
+                                        </mat-form-field>
+                                      </div>
+                                      <div fxLayout="column" fxFlex="30">
+                                        <mat-form-field >
+                                          <input type="text" matInput [(ngModel)]="resedential_address"  name="resedential_address" placeholder="Enter your resedential address"> 
+                                          </mat-form-field>
+                                    </div>
+                                    </div>
+                                    <div fxLayout="row" fxLayoutGap="20px">
+                                      <div fxLayout="column" fxFlex="35">
+                                        <mat-form-field >
+                                          <mat-select  [(ngModel)]="language_id"  name="language_id" placeholder="Select your language">
+                                            <mat-option *ngFor="let language of languages "  [value]="language.id">
+                                                {{language.language_name}}
+                                              </mat-option>
+                                            </mat-select>
+                                          </mat-form-field>
+                                      </div>
+                                      <div fxLayout="column" fxFlex="35">
+                                        <mat-form-field >
+                                        <mat-select  [(ngModel)]="gender_id"  name="gender_id" placeholder="Gender">
+                                          <mat-option *ngFor="let gn of gender "  [value]="gn.id">
+                                              {{gn.gender_type}}
+                                            </mat-option>
+                                          </mat-select>
+                                        </mat-form-field>
+                                      </div>
+                                      <div fxLayout="column" fxFlex="30">
+                                        <mat-form-field >
+                                          <mat-select  [(ngModel)]="degree_id" name="degree_id" placeholder="Degree Name">
+                                            <mat-option *ngFor="let deg of degrees " [value]="deg.id" >
+                                                {{deg.degree_title}}
+                                              </mat-option>
+                                            </mat-select>
+                                          </mat-form-field>
+                                    </div>
+                                    </div>
+                                    <!----------------------------  first flex end---------------------------->
+                                    <div fxLayout="row" fxLayoutGap="20px" style="margin-top: 10px;">
+                                      <div fxLayout="column" fxFlex="35">
+                                        <mat-form-field >
+                                          <mat-select  [(ngModel)]="section_id"  name="section_id" placeholder="section Name">
+                                            <mat-option *ngFor="let sec of sections "  [value]="sec.id">
+                                                {{sec.section_name}}
+                                              </mat-option>
+                                            </mat-select>
+                                          </mat-form-field>
+                                    </div>
+                                    <div fxLayout="column" fxFlex="35">
+                                      <mat-form-field >
+                                        <mat-select  [(ngModel)]="city_id"  name="city_id" placeholder="City Name">
+                                          <mat-option *ngFor="let ct of cities "  [value]="ct.id">
+                                              {{ct.city}}
+                                            </mat-option>
+                                          </mat-select>
+                                        </mat-form-field>
+                                  </div>
+                                  <div fxLayout="column" fxFlex="30">
+                                    <mat-form-field >
+                                      <mat-select  [(ngModel)]="country_id" name="country_id" placeholder="Country Name">
+                                        <mat-option *ngFor="let con of country " [value]="con.id">
+                                            {{con.name}}
+                                          </mat-option>
+                                        </mat-select>
+                                      </mat-form-field>
+                                    </div>
+                                    </div>
+                                    <div fxLayout="row" fxLayoutGap="20px" style="margin-top: 10px;">
+                                      <div fxLayout="column" fxFlex="50">
+                                      <mat-form-field>
+                                        <input matInput [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Date of birth"
+                                        [(ngModel)]="date_of_birth" name="date_of_birth">
+                                      <owl-date-time #dt1></owl-date-time>            
+                                    </mat-form-field>
+                                      </div>
+                                      <div fxLayout="column" fxFlex="50">
+                                      <mat-form-field>
+                                        <input type="text" matInput [(ngModel)]="zip_code"  name="zip_code" placeholder="Enter your city zip code">
+                                      </mat-form-field>
+                                      </div>
+                                    </div>
+                                    <!----------------------------- second flex end -------------------------->
+                                  </mat-dialog-content>
+                                  <mat-dialog-actions align="center">
+                                    <button class="Registerbtn" mat-raised-button>Edit Student</button>
+                                  </mat-dialog-actions>
+                                </form>
+                          </div> 
+                            </mat-tab>
+                <mat-tab label="Guardian">
+                    <div class="profile-about">
+                        <div class="about-title">
+                            <span class="material-icons">man &nbsp;</span><h1 class="">About</h1>
+                        </div>
+                    </div> 
+                    <div class="user-form">
+                        <!-- <h1 class="user-form-title">Students Edit User Profile</h1> -->
+                        <form action="" #updateguardianUserProfile="ngForm" (ngSubmit)="editGuardian(updateguardianUserProfile.value)">
+                          <mat-dialog-content>
+                            <div fxLayout="row" fxLayoutGap="20px">
+                              <div fxLayout="column" fxFlex="50">
+                                <mat-form-field>
+                                  <input type="text" matInput [(ngModel)]="father_name"  name="father_name" placeholder="Enter your father name">
+                                </mat-form-field>
+                              </div>
+                              <div fxLayout="column" fxFlex="50">
+                                <mat-form-field >
+                                  <input type="text" matInput [(ngModel)]="father_cnic_no"  name="father_cnic_no" placeholder="Enter your father CNIC No.">
+                                </mat-form-field>
+                              </div>  
+                            </div>
+                            <!----------------------------  first flex end---------------------------->
+                            <div fxLayout="row" fxLayoutGap="20px" style="margin-top: 10px;">
+                              <div fxLayout="column" fxFlex="50">
+                                <mat-form-field >
+                                  <input type="text" matInput [(ngModel)]="father_occupation"  name="father_occupation" placeholder="Enter your father occupation">
+                                  </mat-form-field>
+                            </div>
+                            <div fxLayout="column" fxFlex="50">
+                              <mat-form-field >
+                                <input type="text" matInput [(ngModel)]="father_contact_no"  name="father_contact_no" placeholder="Enter your father contact no">
+                                </mat-form-field>
+                          </div>
+                            </div>
+                            <!----------------------------- second flex end -------------------------->
+                          </mat-dialog-content>
+                          <mat-dialog-actions align="center">
+                            <button class="Registerbtn" mat-raised-button>Edit Student</button>
+                          </mat-dialog-actions>
+                        </form>
+                  </div> 
+                </mat-tab>
+                <mat-tab label="Qualification">
+                    <div class="profile-about">
+                        <div class="about-title">
+                            <span class="material-icons">local_library &nbsp;</span><h1 class="">About</h1>
+                        </div>
+                    </div>    
+                    <div class="user-form">  
+                      <form action="" #updatequalificationProfile="ngForm" (ngSubmit)="editQualification(updatequalificationProfile.value)">
+                      <mat-dialog-content>
+                        <div fxLayout="row" fxLayoutGap="20px">
+                          <div fxLayout="column" fxFlex="50" >
+                            <mat-form-field>
+                              <input type="text" matInput [(ngModel)]="institute_name"  name="institute_name" placeholder="Enter your institute name">
+                            </mat-form-field>
+                          </div>
+                          <div fxLayout="column" fxFlex="50">
+                            <mat-form-field >
+                              <input type="text" matInput [(ngModel)]="major_subjects"  name="major_subjects" placeholder="Enter your major subject">
+                            </mat-form-field>
+                          </div>  
+                        </div>
+                        <div fxLayout="row" fxLayoutGap="20px" style="margin-top: 10px;">
+                          <div fxLayout="column" fxFlex="50">
+                            <mat-form-field >
+                              <input type="text" matInput [(ngModel)]="total_marks"  name="total_marks" placeholder="Enter your total marks">
+                              </mat-form-field>
+                        </div>
+                        <div fxLayout="column" fxFlex="50">
+                          <mat-form-field >
+                            <input type="text" matInput [(ngModel)]="obtained_marks"  name="obtained_marks" placeholder="Enter your obtained marks">
+                            </mat-form-field>
+                      </div>
+                        </div>
+                      </mat-dialog-content>
+                      <mat-dialog-actions align="center">
+                        <button class="Registerbtn" mat-raised-button>Edit Student</button>
+                      </mat-dialog-actions>
+                      </form>
+                  </div> 
+                </mat-tab>
+              </mat-tab-group>
+            </mat-card-content>
+    </mat-card>    
+</div>
+</div>
+</section>
+
+  

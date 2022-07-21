@@ -1,0 +1,24 @@
+<mat-nav-list>
+    <mat-list-item (click)="showSubmenu = !showSubmenu" class="sidenav-title">
+        <span class="navlist-title" *ngIf="isExpanded || isShowing">Students Management</span>
+        <mat-icon mat-list-icon>cast_for_education</mat-icon>
+        <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
+    </mat-list-item>
+    <div class="submenu" [ngClass]="{'expanded' : showSubmenu}" *ngIf="isShowing || isExpanded" >
+        <a mat-list-item [routerLink]="students" routerLinkActive="active"  [routerLinkActiveOptions]="{exact:true}" *ngIf="userType=='Admin' || userType=='SuperAdmin' || userType=='Student'"><mat-icon mat-list-icon>school</mat-icon>Students</a>
+        <a mat-list-item [routerLink]="teachers" routerLinkActive="active"  [routerLinkActiveOptions]="{exact:true}" *ngIf="userType=='Admin' || userType=='SuperAdmin' || userType=='Teacher'"><mat-icon mat-list-icon>assignment</mat-icon>Teachers</a>
+        <a mat-list-item [routerLink]="courses"  routerLinkActive="active"  [routerLinkActiveOptions]="{exact:true}" *ngIf="userType=='Admin' || userType=='SuperAdmin' "><mat-icon mat-list-icon>class</mat-icon>Courses</a>
+        <a mat-list-item [routerLink]="subjects" routerLinkActive="active"  [routerLinkActiveOptions]="{exact:true}"  *ngIf="userType=='Admin' || userType=='SuperAdmin' "><mat-icon mat-list-icon>note</mat-icon>Subjects</a>
+        <a mat-list-item [routerLink]="timetable" routerLinkActive="active"  [routerLinkActiveOptions]="{exact:true}"  ><mat-icon mat-list-icon>note</mat-icon>Timetable</a>
+
+         <mat-list-item (click)="showSubSubMenu = !showSubSubMenu" class="parent" *ngIf="usrManagement && (userType=='Admin' || userType=='SuperAdmin')">
+            <span class="navlist-title" *ngIf="isExpanded || isShowing">User Management</span>
+            <mat-icon mat-list-icon>build</mat-icon>
+            <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubSubMenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
+        </mat-list-item> 
+         <div class="submenu" [ngClass]="{'expanded' : showSubSubMenu}" *ngIf="isShowing || isExpanded">
+            <a mat-list-item [routerLink]="user" routerLinkActive="active"  [routerLinkActiveOptions]="{exact:true}"><mat-icon mat-list-icon>account_circle</mat-icon>User</a>
+            <!-- <a mat-list-item [routerLink]="usertype" routerLinkActive="active"  [routerLinkActiveOptions]="{exact:true}"><mat-icon mat-list-icon>account_box</mat-icon>User Type</a> -->
+        </div>
+    </div>
+</mat-nav-list>

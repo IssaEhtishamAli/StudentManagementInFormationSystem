@@ -1,0 +1,101 @@
+<mat-toolbar class="content-header">
+  <h1>Subjects</h1>
+</mat-toolbar>
+<section id="subjects">
+    <mat-card>
+      <mat-toolbar>
+          <mat-toolbar-row>
+              <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+                <ul fxLayout="row" fxLayoutGap="20px">
+                  <li>
+                    <button mat-raised-button  (click)="addSubjectDialog(addDialog)" class="addButton">
+                      <mat-icon >add</mat-icon>
+                      Add Subject</button>
+                  </li>
+                  <li>
+                    <button mat-raised-button  (click)="editDialog(Dialog)" class="editButton">
+                      <mat-icon>edit</mat-icon>
+                      Edit Subject</button>
+                  </li>
+                  <li>
+                    <button class="deletebutton" mat-raised-button (click)="delete()" class="deleteButton">
+                      <mat-icon>delete</mat-icon>
+                      Delete Subject</button>
+                  </li>
+                </ul>
+              </div>
+    </mat-toolbar-row>
+      </mat-toolbar>
+      <mat-card-content>
+        <ag-grid-angular 
+        style="width: 100%; height: 500px;"
+        class="ag-theme-alpine"
+         (gridReady)="onGridReady($event)"  
+        [columnDefs]="columnDefs" 
+        [rowData]="subjects"
+        [rowSelection]="rowSelection"
+        [pagination]="true"
+        [paginationPageSize]="paginationPageSize">
+      </ag-grid-angular>  
+      </mat-card-content>
+    </mat-card>
+    </section>
+    <!------------------Subject edit form---------------------------->
+    <section id="suBjectsEditDialog">
+      <ng-template #Dialog>
+        <div  class="dialog">
+          <mat-toolbar>
+              <div mat-dialog-title>
+                  <h1 align="center">Subject Edit</h1>
+              </div>    
+          </mat-toolbar>
+          <button mat-icon-button class="close-button" [mat-dialog-close]="true">
+            <mat-icon class="close-icon" >close</mat-icon>
+          </button>    
+          <form action=""  #updateSubjectForm="ngForm" (ngSubmit)="upDateSubjectRegister(updateSubjectForm.value)" >
+            <mat-dialog-content>
+           <div fxLayout="row" fxFlex="100">
+            <mat-form-field >
+              <textarea matInput [(ngModel)]="subject_name" name="subject_name" placeholder="Enter your subject name"></textarea>  
+              <mat-error *ngIf="reGisterSubjectForm.get('subject_name').errors?.required">Subject is required</mat-error>            
+              
+            </mat-form-field>
+           </div>
+            </mat-dialog-content>
+            <mat-dialog-actions align="center">
+                <button class="edItSubjectButton" mat-raised-button  >Edit Subject</button>
+            </mat-dialog-actions>
+        </form>
+    </div>
+      </ng-template>
+</section>
+<!-----------------------------add subjects------------------------------------>
+<section>
+  <ng-template #addDialog>
+  <div  class="dialog">
+      <mat-toolbar>
+          <div mat-dialog-title>
+              <h1 align="center">Subjects Registration</h1>
+          </div>
+      </mat-toolbar>
+      <button mat-icon-button class="close-button" [mat-dialog-close]="true">
+          <mat-icon class="close-icon" >close</mat-icon>
+        </button>    
+      <form action="" [formGroup]="reGisterSubjectForm" (ngSubmit)="reGisterSubject()">
+          <mat-dialog-content>
+      <div fxLayout="row" fxLayoutGap="20px" >
+         <div fxLayout="column" fxFlex="100" >
+          <mat-form-field>
+                <textarea matInput formControlName="subject_name" placeholder="Enter your subject name"></textarea>              
+                <mat-error *ngIf="reGisterSubjectForm.get('subject_name').errors?.required">Subject is required</mat-error>
+          </mat-form-field>
+         </div>
+      </div>
+          </mat-dialog-content>
+          <mat-dialog-actions align="center">
+              <button class="Registerbtn" mat-raised-button >Register Subject</button>
+          </mat-dialog-actions>
+      </form>
+  </div>
+</ng-template>
+</section>

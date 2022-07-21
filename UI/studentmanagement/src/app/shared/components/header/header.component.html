@@ -1,0 +1,76 @@
+ <mat-toolbar class="header">
+    <mat-toolbar-row>
+        <div class="logo">
+            <img src="../../../../assets/images/—Pngtree—logo school for example_5303216.png" alt="">
+        </div>
+        <div fxFlex fxLayout="row" fxFlexOffset="5" class="sec">
+            <button mat-icon-button (click)="togglesidebar()">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </div>
+        <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+            <ul fxLayout="row" fxLayoutGap="20px">
+                <li>
+                    <button mat-icon-button>
+                        <mat-icon>settings</mat-icon>
+                    </button>
+                </li>
+                <li>
+                    <button mat-button [matMenuTriggerFor]="menu">
+                        <mat-icon>person_outline</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item>
+                            <mat-icon>accessibility</mat-icon>
+                            <a  routerLink="userprofile" >User Profile</a>
+                        </button>
+                        <button mat-menu-item (click)="signout()">
+                            <mat-icon>exit_to_app</mat-icon>
+                            sign out
+                        </button>
+                    </mat-menu>
+                </li>
+            </ul>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<!------------------------------------->
+<!-- <div class="header2">
+    <div class="one">
+
+<mat-toolbar>
+    <div class="logo">
+        <img src="../../../../assets/images/—Pngtree—education institute logo_6650602.png" alt="">
+    </div>
+    <button mat-icon-button (click)="togglesidebar()" class="menubtn">
+        <mat-icon>menu</mat-icon>
+    </button>
+</mat-toolbar>
+</div>
+<div class="two">
+
+<mat-toolbar>
+    <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+        <ul fxLayout="row" fxLayoutGap="20px">
+            <li>
+                <button mat-icon-button>
+                    <mat-icon>settings</mat-icon>
+                </button>
+            </li>
+            <li>
+                <button mat-button [matMenuTriggerFor]="menu">
+                    <mat-icon>person_outline</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="signout()">
+                        <mat-icon>exit_to_app</mat-icon>
+                        sign out
+                    </button>
+                </mat-menu>
+            </li>
+        </ul>
+    </div>
+</mat-toolbar>
+</div>
+</div> -->

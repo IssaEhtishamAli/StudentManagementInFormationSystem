@@ -1,0 +1,46 @@
+#userProfile{
+    margin-top: 50px;
+    .user-name{
+        text-align: center;
+    }
+    .profile-about{
+        margin-top: 20px;
+        width: 100%;
+        display: flex;
+        overflow: hidden;
+        justify-content: space-between;
+        .edit-btn{
+            width: 150px;
+            // border-radius: 0 0 50% 50%/0 0 100% 100%;
+            border-radius: 50px;
+            box-shadow: 5px 5px #717171;
+            margin-right: 4px;
+        }
+       
+        .about-title{
+            position: relative;
+            float: left;
+            display: flex;
+            .material-icons{
+                font-size: 30px;
+            }
+        }
+        .edit-btn-sec{
+            
+        }
+    }
+    .user-form{
+        margin-top: 20px;
+        .Registerbtn{
+            background: #2ba6c8;
+            border-radius: 50px;
+        }
+    }
+    .profile-picture{
+        display: flex;
+        justify-content: center;
+    }
+    .table{
+        width: 100%;
+    }
+}

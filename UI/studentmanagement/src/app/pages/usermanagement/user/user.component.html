@@ -1,0 +1,155 @@
+<mat-toolbar class="content-header">
+    <h1>Users</h1>
+  </mat-toolbar>
+  <section id="teachers">
+    <mat-card>
+      <mat-toolbar>
+        <mat-toolbar-row>
+          <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+            <ul fxLayout="row" fxLayoutGap="20px">
+              <li>
+                <button mat-raised-button color="primary" (click)="addUsersDialog(addDialog)" class="addButton">
+                  <mat-icon>add</mat-icon>
+                  Add User
+                </button>
+              </li>
+              <li>
+                <button mat-raised-button color="accent" (click)="editUserDialog(Dialog)" class="editButton">
+                  <mat-icon>edit</mat-icon>
+                  Edit User
+                </button>
+              </li>
+              <li>
+                <button mat-raised-button color="warn" (click)="deleteUsers()" class="deleteButton">
+                  <mat-icon>delete</mat-icon>
+                  Delete User
+                </button>
+              </li>
+            </ul>
+          </div>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <mat-card-content>
+        <ag-grid-angular style="width: 100%; height: 500px;" class="ag-theme-alpine" (gridReady)="onGridReady($event)"
+          [columnDefs]="columnDefs" [rowData]="users" [rowSelection]="rowSelection" [pagination]="true"
+          [paginationPageSize]="paginationPageSize">
+        </ag-grid-angular>
+  
+      </mat-card-content>
+    </mat-card>
+  </section>
+<!-------------------------------------------Edit user --------------------------------------------->
+<section>
+  <ng-template #Dialog>
+    <div class="dialog">
+      <mat-toolbar>
+        <div mat-dialog-title>
+          <h1 align="center">User Edit</h1>
+        </div>
+      </mat-toolbar>
+      <button mat-icon-button class="close-button" [mat-dialog-close]="true">
+        <mat-icon class="close-icon" >close</mat-icon>
+      </button>    
+      <form action="" #EditTUserForm="ngForm" (ngSubmit)="editUserRegister(EditTUserForm.value)">
+        <mat-dialog-content>
+          <div fxLayout="row" fxLayoutGap="20px">
+        
+
+            <div fxLayout="column" fxFlex="50">
+              <mat-form-field>
+                <input type="text" matInput [(ngModel)]="user_name" name="user_name" placeholder="User name">
+              </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxFlex="50">
+              <mat-form-field>
+                <input type="text" matInput [(ngModel)]="password" name="password" placeholder="Password">
+              </mat-form-field>
+            </div>
+          </div>
+          <!----------------------------  first flex end---------------------------->
+          <div fxLayout="row" fxLayoutGap="20px">
+            <div fxLayout="column" fxFlex="50">
+              <mat-form-field>
+                <input type="text" matInput [(ngModel)]="email" name="email" placeholder="Email">
+              </mat-form-field>
+            </div>
+            <div fxLayout="column" fxFlex="50">
+              <mat-form-field>
+                <mat-select [(ngModel)]="user_type" name="user_type" placeholder="User Type">
+                  <mat-option *ngFor="let ust of usertype " [value]="ust.id">
+                      {{ust.type}}
+                    </mat-option>
+                  </mat-select>         
+                  </mat-form-field>
+            </div>
+          </div>
+         
+        </mat-dialog-content>
+        <mat-dialog-actions align="center">
+          <button class="Registerbtn" mat-raised-button color="primary">Edit User</button>
+        </mat-dialog-actions>
+      </form>
+    </div>
+  </ng-template>
+</section>
+  <!-------------------------------------Add user form----------------------------------------------->
+  <section id="studentregistration">
+    <ng-template #addDialog>
+    <div  class="dialog">
+        <mat-toolbar>
+            <div mat-dialog-title class="title">
+                <h1 align="center">User Registration</h1>
+            </div>    
+        </mat-toolbar>
+        <button mat-icon-button class="close-button" [mat-dialog-close]="true">
+            <mat-icon class="close-icon" >close</mat-icon>
+          </button>    
+        <form action="" [formGroup]="reGisterUserForm" (ngSubmit)="reGisterUsers()">
+            <mat-dialog-content>
+        <div fxLayout="row" fxLayoutGap="20px" >
+           <div fxLayout="column" fxFlex="50" >
+            <mat-form-field>
+                <input type="text" matInput formControlName="user_name" placeholder="User Name">
+                <mat-error *ngIf="reGisterUserForm.get('user_name').errors?.required">User name is required</mat-error>
+            </mat-form-field>
+           </div>
+           <div fxLayout="column" fxFlex="50">
+            <mat-form-field >
+                <input type="text" matInput formControlName="password" placeholder="Password">
+                <mat-error *ngIf="reGisterUserForm.get('password').errors?.required">Password no is required</mat-error>
+            </mat-form-field>
+           </div>
+        </div>
+        <!----------------------------  first flex end---------------------------->
+        <div fxLayout="row" fxLayoutGap="20px">
+            <div fxLayout="column" fxFlex="50">
+               <mat-form-field >
+                   <input type="text" matInput formControlName="email" placeholder="Email">
+                   <mat-error *ngIf="reGisterUserForm.get('email').errors?.required">Email is required</mat-error>
+                 </mat-form-field>
+            </div>
+            <div fxLayout="column" fxFlex="50">
+              <mat-form-field >
+                <mat-select formControlName="user_type" placeholder="User Type">
+                <mat-option *ngFor="let ust of usertype " [value]="ust.id">
+                    {{ust.type}}
+                  </mat-option>
+                </mat-select>
+              <mat-error *ngIf="reGisterUserForm.get('user_type').errors?.required">User type is required</mat-error>
+            </mat-form-field>
+            </div>
+          </div>
+        <!----------------------------- second flex end -------------------------->
+    </mat-dialog-content>
+    <mat-dialog-actions align="center">
+        <button class="Registerbtn" mat-raised-button color="primary">Register User</button>
+    </mat-dialog-actions>
+        </form>
+    </div> 
+    </ng-template>
+  </section>
+  
+  
+  
+ 

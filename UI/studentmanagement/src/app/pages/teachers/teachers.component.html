@@ -1,0 +1,219 @@
+<mat-toolbar class="content-header" >
+  <h1>Teachers</h1>
+</mat-toolbar>
+<section id="teachers" *ngIf="agGridHide">
+  <mat-card>
+    <mat-toolbar>
+      <mat-toolbar-row  *ngIf="userType=='Admin' || userType=='SuperAdmin'">
+        <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+          <ul fxLayout="row" fxLayoutGap="20px">
+            <li>
+              <button mat-raised-button color="primary" (click)="addTeacherDialog()" class="addButton">
+                <mat-icon>add</mat-icon>
+                Add Teacher
+              </button>
+            </li>
+            <li>
+              <button mat-raised-button color="accent" (click)="editTeacherDialog(Dialog)" class="editButton">
+                <mat-icon>edit</mat-icon>
+                Edit Teacher
+              </button>
+            </li>
+            <li>
+              <button mat-raised-button color="warn" (click)="deleteTeacher()" class="deleteButton">
+                <mat-icon>delete</mat-icon>
+                Delete Teacher
+              </button>
+            </li>
+          </ul>
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-card-content>
+      <ag-grid-angular style="width: 100%; height: 500px;" class="ag-theme-alpine" (gridReady)="onGridReady($event)"
+        [columnDefs]="columnDefs" [rowData]="teacher" [rowSelection]="rowSelection" [pagination]="true"
+        [paginationPageSize]="paginationPageSize">
+      </ag-grid-angular>
+    </mat-card-content>
+  </mat-card>
+</section>
+<!---------------Edit teacher ------------------------------------>
+<section>
+  <ng-template #Dialog>
+    <div class="dialog">
+      <mat-toolbar>
+        <div mat-dialog-title>
+          <h1 align="center">Teacher Edit</h1>
+        </div>
+      </mat-toolbar>
+      <button mat-icon-button class="close-button" [mat-dialog-close]="true">
+        <mat-icon class="close-icon" >close</mat-icon>
+      </button>    
+      <form action="" #updateEditTeacherForm="ngForm" (ngSubmit)="editTeacherRegister(updateEditTeacherForm.value)">
+        <mat-dialog-content>
+          <div fxLayout="row" fxLayoutGap="20px">
+            <div fxLayout="column" fxFlex="50">
+              <mat-form-field>
+                <input type="text" matInput [(ngModel)]="teacher_name" name="teacher_name" placeholder="Teacher name">
+              </mat-form-field>
+            </div>
+            <div fxLayout="column" fxFlex="50">
+              <mat-form-field>
+                <input type="text" matInput [(ngModel)]="cnic_no" name="cnic_no" placeholder="Cnic no">
+              </mat-form-field>
+            </div>
+          </div>
+          <!----------------------------  first flex end---------------------------->
+          <div fxLayout="row" fxLayoutGap="20px">
+            <div fxLayout="column" fxFlex="50">
+              <mat-form-field>
+                <input type="text" matInput [(ngModel)]="address" name="address" placeholder="Address">
+              </mat-form-field>
+            </div>
+            <div fxLayout="column" fxFlex="50">
+              <mat-form-field>
+                <input type="text" matInput [(ngModel)]="description" name="description" placeholder="Description">
+              </mat-form-field>
+            </div>
+          </div>
+          <!----------------------------- second flex end -------------------------->
+          <div fxLayout="row" fxLayoutGap="20px">
+            <div fxLayout="column" fxFlex="100">
+              <mat-form-field>
+                <input type="text" matInput [(ngModel)]="contact_no" name="contact_no" placeholder="Contact no">
+              </mat-form-field>
+            </div>
+          </div>
+          <!-----------------------------third flex end ---------------------------->
+        </mat-dialog-content>
+        <mat-dialog-actions align="center">
+          <button class="Registerbtn" mat-raised-button color="primary">Edit Teacher</button>
+        </mat-dialog-actions>
+      </form>
+    </div>
+  </ng-template>
+</section>
+<!-------------------------- add teacher------------------------------>
+<section id="studentregistration">
+  <ng-template #addDialog>
+  <div  class="dialog">
+      <mat-toolbar>
+          <div mat-dialog-title class="title">
+              <h1 align="center">Teachers Registration</h1>
+          </div>    
+      </mat-toolbar>
+      <button mat-icon-button class="close-button" [mat-dialog-close]="true">
+          <mat-icon class="close-icon" >close</mat-icon>
+        </button>    
+      <form action="" [formGroup]="reGisterTeacherForm" (ngSubmit)="reGisterTeacher()">
+          <mat-dialog-content>
+      <div fxLayout="row" fxLayoutGap="20px" >
+         <div fxLayout="column" fxFlex="50" >
+          <mat-form-field>
+              <input type="text" matInput formControlName="teacher_name" placeholder="Teacher Name">
+              <mat-error *ngIf="reGisterTeacherForm.get('teacher_name').errors?.required">Teacher name is required</mat-error>
+          </mat-form-field>
+         </div>
+         <div fxLayout="column" fxFlex="50">
+          <mat-form-field >
+              <input type="text" matInput formControlName="cnic_no" placeholder="CNIC No.">
+              <mat-error *ngIf="reGisterTeacherForm.get('cnic_no').errors?.required">Cnic no is required</mat-error>
+          </mat-form-field>
+         </div>
+      </div>
+      <!----------------------------  first flex end---------------------------->
+      <div fxLayout="row" fxLayoutGap="20px">
+          <div fxLayout="column" fxFlex="50">
+             <mat-form-field >
+                 <input type="text" matInput formControlName="address" placeholder="Address">
+                 <mat-error *ngIf="reGisterTeacherForm.get('address').errors?.required">Address is required</mat-error>
+               </mat-form-field>
+          </div>
+          <div fxLayout="column" fxFlex="50">
+             <mat-form-field >
+                 <input type="text" matInput formControlName="description" placeholder="Description">
+                 <mat-error *ngIf="reGisterTeacherForm.get('description').errors?.required">Description is required</mat-error>
+               </mat-form-field>
+          </div>
+        </div>
+      <!----------------------------- second flex end -------------------------->
+      <div fxLayout="row" fxLayoutGap="20px">
+          <div fxLayout="column" fxFlex="100">
+              <mat-form-field >
+                  <input type="text" matInput formControlName="contact_no" placeholder="Contact No.">
+                  <mat-error *ngIf="reGisterTeacherForm.get('contact_no').errors?.required">Contact no is required</mat-error>
+               </mat-form-field>
+          </div>
+      </div>
+      <!-----------------------------third flex end ---------------------------->
+  </mat-dialog-content>
+  <mat-dialog-actions align="center">
+      <button class="Registerbtn" mat-raised-button color="primary">Register Teacher</button>
+  </mat-dialog-actions>
+      </form>
+  </div> 
+  </ng-template>
+</section>
+
+<section style="margin-top: 20px;" *ngIf="teacherForm">
+  <mat-accordion>
+    <mat-expansion-panel  [expanded]="step === 0" (opened)="setStep(0)" >
+<mat-expansion-panel-header>
+<mat-panel-title >
+  Teacher Information
+</mat-panel-title>
+<mat-panel-description>
+</mat-panel-description>
+</mat-expansion-panel-header>
+<div  class="dialog">
+<h1>Teacher Registration</h1>
+<form action="" [formGroup]="reGisterTeacherForm" (ngSubmit)="reGisterTeacher()">
+  <mat-dialog-content>
+<div fxLayout="row" fxLayoutGap="20px" >
+ <div fxLayout="column" fxFlex="50" >
+  <mat-form-field>
+      <input type="text" matInput formControlName="teacher_name" placeholder="Teacher Name">
+      <mat-error *ngIf="reGisterTeacherForm.get('teacher_name').errors?.required">Teacher name is required</mat-error>
+  </mat-form-field>
+ </div>
+ <div fxLayout="column" fxFlex="50">
+  <mat-form-field >
+      <input type="text" matInput formControlName="cnic_no" placeholder="CNIC No.">
+      <mat-error *ngIf="reGisterTeacherForm.get('cnic_no').errors?.required">Cnic no is required</mat-error>
+  </mat-form-field>
+ </div>
+</div>
+<!----------------------------  first flex end---------------------------->
+<div fxLayout="row" fxLayoutGap="20px">
+  <div fxLayout="column" fxFlex="50">
+     <mat-form-field >
+         <input type="text" matInput formControlName="address" placeholder="Address">
+         <mat-error *ngIf="reGisterTeacherForm.get('address').errors?.required">Address is required</mat-error>
+       </mat-form-field>
+  </div>
+  <div fxLayout="column" fxFlex="50">
+     <mat-form-field >
+         <input type="text" matInput formControlName="description" placeholder="Description">
+         <mat-error *ngIf="reGisterTeacherForm.get('description').errors?.required">Description is required</mat-error>
+       </mat-form-field>
+  </div>
+</div>
+<!----------------------------- second flex end -------------------------->
+<div fxLayout="row" fxLayoutGap="20px">
+  <div fxLayout="column" fxFlex="100">
+      <mat-form-field >
+          <input type="text" matInput formControlName="contact_no" placeholder="Contact No.">
+          <mat-error *ngIf="reGisterTeacherForm.get('contact_no').errors?.required">Contact no is required</mat-error>
+       </mat-form-field>
+  </div>
+</div>
+<!-----------------------------third flex end ---------------------------->
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+<button class="Registerbtn" mat-raised-button color="primary">Register Teacher</button>
+</mat-dialog-actions>
+</form>
+</div> 
+</mat-expansion-panel>
+  </mat-accordion>  
+</section>

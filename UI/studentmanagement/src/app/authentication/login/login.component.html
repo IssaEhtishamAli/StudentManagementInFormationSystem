@@ -1,0 +1,139 @@
+<!----------------------------Forgot password modal----------------------------->
+   <section>
+    <ng-template #Dialog>
+      <div class="dialog">
+          <div mat-dialog-title>
+            <h1>Forgot Password</h1>
+          </div>
+          <button mat-icon-button class="close-button" [mat-dialog-close]="true">
+            <mat-icon class="close-icon" >close</mat-icon>
+          </button>    
+
+        <form action="" [formGroup]="forgotForm" >
+          <mat-dialog-content>
+            <div fxLayout="row">
+              <div fxLayout="column" fxFlex="100">
+                <mat-form-field >
+                  <input type="text" matInput formControlName="email" placeholder="Email">
+                  <mat-error *ngIf="isFieldInvalid('email')">User email is required</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxLayout="row">
+              <div fxLayout="column" fxFlex="100">
+                <mat-form-field>
+                  <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" placeholder="Password">
+                  <button color="primary" type="button" mat-icon-button matSuffix (click)="hide = !hide" id="eyebtn">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                  <mat-error *ngIf="isFieldInvalid('password')">User password is required</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxLayout="row">
+              <div fxLayout="column" fxFlex="100">
+                <mat-form-field>
+                  <input matInput [type]="confirmpasswordhide ? 'password' : 'text'" formControlName="confirmPassword" placeholder="Confirm Password">
+                  <button color="primary" type="button" mat-icon-button matSuffix (click)="confirmpasswordhide = !confirmpasswordhide" id="eyebtn">
+                    <mat-icon>{{confirmpasswordhide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                  <mat-error *ngIf="isFieldInvalid('confirmPassword')">User password is required</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+          </mat-dialog-content>
+        </form>
+        <div class="forgot">
+          <button mat-raised-button class="submit" (click)="submitForgotPassword(forgotForm.value)">Submit</button>
+        </div>
+      </div>
+    </ng-template>
+  </section>
+  <section>
+    <div fxLayout="row">
+      <div fxLayout="column" fxFlex="50" >
+        <mat-card id="card-img">
+            <h1>Sarhad University of Science & <br> <br> Information Technology.</h1>
+            <p>Everything you need to know about a Student Managemenet <br>  Information System (SMIS)</p>
+        </mat-card>
+      </div>
+      <div fxLayout="column" fxFlex="50">
+        <mat-card class="login-card">
+          <mat-card-content>
+            <mat-card class="login-form">
+              <mat-card-content>
+              <mat-tab-group mat-align-tabs="center"  (selectedTabChange)="register($event)">
+                <mat-tab label="Sign in">
+                   <p class="title-text">Sign in</p>
+                  <form action="" [formGroup]="loginForm">
+                    <div  fxLayout="row wrap" class="form-fields">
+                      <div fxLayout="column" fxFlex="100">
+                        <div fxLayout="row" fxLayoutAlign="center">
+                          <div fxLayout="column" fxFlex="5">
+                            <mat-icon class="icon">
+                              <span class="material-icons-outlined">
+                                forward_to_inbox
+                                </span>
+                             </mat-icon>                  
+                          </div>
+                          <div fxLayout="column" fxFlex="75">
+                            <mat-form-field >
+                              <input type="text" matInput formControlName="email" placeholder="Email">
+                              <mat-error *ngIf="isfieldinvalid('email')">User email is required</mat-error>
+                            </mat-form-field>                
+                          </div>
+                        </div>
+                      </div>
+                      <div fxLayout="column" fxFlex="100" class="second-field">
+                        <div fxLayout="row" fxLayoutAlign="center">
+                          <div fxLayout="column" fxFlex="5">
+                            <mat-icon class="icon">
+                              <span class="material-icons-outlined">
+                                vpn_key
+                                </span>
+                            </mat-icon>
+                          </div>
+                          <div fxLayout="column" fxFlex="75">
+                            <mat-form-field>
+                              <input matInput [type]="loginhide ? 'password' : 'text'" formControlName="password" placeholder="Password">
+                              <button color="primary" type="button" mat-icon-button matSuffix (click)="loginhide = !loginhide" id="eyebtn">
+                                <mat-icon>{{loginhide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                              </button>
+                              <mat-error *ngIf="isfieldinvalid('password')">User password is required</mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                  <div fxLayout="row" class="forgot-row" >
+                    <div fxLayout="column" fxFlex="40" fxFlexOffset="11">
+                      <div fxLayout="column" fxFlexOffset="5">
+                        <mat-checkbox *ngIf="checked"
+                        [(indeterminate)]="indeterminate"
+                        [labelPosition]="labelPosition">
+                        Remember Me
+                    </mat-checkbox>
+                      </div>
+                    </div>
+                    <div fxLayout="column" fxFlex="43">
+                      <div class="forgot">
+                        <a [routerLink]="" (click)="changePassword(Dialog)">Click here -> change password?</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div fxLayout="row" class="login-btn-sec">
+                    <div fxLayout="column" fxFlex="30" fxFlexOffset="62">
+                      <button class="login-btn" mat-raised-button   (click)="login(loginForm.value)">Sign in</button>
+                    </div>
+                  </div>
+                </mat-tab>
+              </mat-tab-group>
+            </mat-card-content>
+            </mat-card>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </section>

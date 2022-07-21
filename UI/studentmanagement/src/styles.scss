@@ -1,0 +1,464 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/@syncfusion/ej2-base/styles/material.css';  
+@import '../node_modules/@syncfusion/ej2-buttons/styles/material.css';  
+@import '../node_modules/@syncfusion/ej2-calendars/styles/material.css';  
+@import '../node_modules/@syncfusion/ej2-dropdowns/styles/material.css';  
+@import '../node_modules/@syncfusion/ej2-inputs/styles/material.css';  
+@import '../node_modules/@syncfusion/ej2-lists/styles/material.css';  
+@import '../node_modules/@syncfusion/ej2-popups/styles/material.css';  
+@import '../node_modules/@syncfusion/ej2-navigations/styles/material.css';  
+@import '../node_modules/@syncfusion/ej2-angular-schedule/styles/material.css';  
+// @import "./assets//theme.scss";
+// @import "./assets//theme1.scss";
+// @import "./assets//theme2.scss";
+   @import "./assets//theme3.scss";
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+//--------------------------Login Section--------------------------------//
+#card-img {
+    background: url(./assets/images/students.jpg) no-repeat 0, 0, $background-img;
+    background-blend-mode: multiply;
+    background-position: cover;
+    background-size: 100% 100%;
+    position: relative;
+    height: 96vh;
+    border-radius: 0px;
+    h1 {
+        text-align: center;
+        position: relative;
+        top: 40%;
+        color: $img-text-color;
+        font-size: 50px;
+        font-weight: 1000;
+    }
+    p {
+        text-align: left;
+        position: relative;
+        top: 43%;
+        left: 15px;
+        color: $img-text-color;
+        font-size: 20px;
+        font-weight: 1000;
+    }
+}
+.login-card {
+    position: relative;
+    height: 96vh;
+    background: $login-card-color;
+    border-radius: 0px;
+
+    .login-form {
+        position: relative;
+        height: 91vh;
+
+        .form-fields {
+            margin-top: 70px;
+
+            .second-field {
+                margin-top: 40px;
+            }
+
+            .icon {
+                margin-top: 15px;
+            }
+        }
+
+        .title-text {
+            margin-top: 70px;
+            margin-left: 70px;
+            font-size: 20px;
+        }
+    }
+    .forgot-row {
+        overflow: hidden;
+        margin-top: 20px;
+    }
+    .login-btn-sec {
+        margin-top: 30px;
+
+        .login-btn {
+            border-radius: 70px 20px;
+            background: $buttons-background;
+        }
+    }
+}
+@media only screen and (max-width: $breakpoint-laptop) {
+    #card-img {
+        display: none;
+    }
+
+    .login-card {
+        width: 130%;
+        position: relative;
+        right: 300px;
+
+        .login-form {
+            width: 92%;
+            height: 92vh;
+        }
+    }
+}
+@media only screen and (max-width:$breakpoint-tablet) {
+    #card-img {
+        display: none;
+    }
+
+    .login-card {
+        position: relative;
+        width: 158%;
+        right: 250px;
+    }
+    .login-form {
+        width: 92%;
+        height: 94vh;
+
+        .mat-card-content {
+            .mat-tab {
+                .title-text {
+                    margin-top: 70px;
+                    margin-left: 70px;
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width:$breakpoint-mobile) {
+    #card-img {
+        display: none;
+    }
+    .login-card {
+        width: 400px;
+        margin-left: 40px;
+    }
+}
+//------------------------- login card --------------------------------------//
+.form-element {
+  height: 60vh;
+  background: $card-background-color;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  .mat-form-field{
+      width: 100%;
+  }
+  .logo{
+      width: 100px;
+      margin: 10px;
+  }
+  .register{
+    display: flex;
+    justify-content: flex-end;
+  }
+  .mat-raised-button{
+    width:60%;
+    background-color: $buttons-background;
+    color: $buttons-text-color;
+    box-shadow: $shadow-color;
+    border-radius: $buttons-radius;
+    &:hover{
+      color: $text-hover-color;
+      background-color: $buttons-background-hover-color;
+    }
+  }
+  .mat-icon{
+    color: $login-icon-color;
+  }
+}
+.forgot{
+  display: flex;
+  justify-content: flex-end ;
+  margin-right: 20px;
+  margin-top: 25px;
+  a{
+    text-decoration: none;
+    color: $buttons-background;
+    font-weight: 1000px;
+    font-size: 17px;
+    &:hover{
+      color: $buttons-background-hover-color;
+    }
+  }
+  .forgotbtn{
+    width: auto;
+  }
+}
+//----------------------------------End Login-----------------------------------//
+
+//------------------------------ home -------------------------//
+:host{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+}
+.mat-drawer{
+    width: 350px;
+}
+.mat-drawer-container{
+    height: 100%;
+    width: 100%;
+}
+.mat-drawer-content{
+    padding: 20px;
+}
+/*------------------------------ home end ---------------------*/
+
+//------------------------------ header ------------------------//
+.header{
+  background:$header-background;
+  .mat-icon{
+    color: $icons-color;
+    &:hover{
+      color: $icons-hover-color;
+    }
+  }
+  .logo{
+    width: 150px;
+    img{
+      width: 80px;
+      height: 70px;
+    }
+  }
+}
+ul li {
+    list-style: none;
+}
+
+/*------------------------------ header end ---------------------*/
+
+//------------------------------- sidenav -----------------------*/
+  .mat-list-item.active{
+    background: $sidenav-list-hover-background-color;
+    color: $text-active-color;
+    box-shadow: $shadow-color;
+  }
+.mat-nav-list{
+  margin-top: 58px;
+  .sidenav-title{
+    font-family: bold;
+    &:hover{
+      background: $sidenav-list-hover-background-color;
+      color: $text-hover-color;
+      color: $icons-hover-color;
+    }
+  }
+}
+.mat-drawer{
+  background: $sidenav-background-color;
+  box-shadow: $shadow-color;
+  width: 270px;
+}
+  .menu-button {
+    transition: 300ms ease-in-out;
+    transform: rotate(0deg);
+    &:hover{
+      color: $icons-hover-color;
+      
+    }
+  }
+  .menu-button.rotated {
+    transform: rotate(180deg);
+  }
+  .submenu {
+    overflow-y: hidden;
+    transition: transform 300ms ease;
+    transform: scaleY(0);
+    transform-origin: top;
+    padding-left: 0px;
+    font-family: bold;
+    .mat-list-item{
+      font-family: bold;
+      &:hover{
+        background: $buttons-background-hover-color;
+      }
+    }
+    a{
+    &:hover{
+      color: $text-hover-color;
+    }
+  }
+  }
+  .submenu.expanded {
+    transform: scaleY(1);
+  }
+/*----------------------------- sidenav end --------------------*/
+
+//----------------------------- footer --------------------------//
+footer{
+    padding: 20px;
+    background: $footer-background;
+    ul li{
+      list-style: none;
+      margin: 15px;
+      font-weight: 600;
+      a{
+        text-decoration: none;
+        color: #fff;
+        &:hover{
+          color: $text-hover-color;
+        }
+      }
+    }
+    .address{
+      h1{
+        font-weight: 500;
+        color: #fff;
+      }
+      p{
+       font-weight: 600;
+       color: #fff;
+
+      }
+      .homeicon{
+        color: #fff;
+
+       }
+       .phoneicon{
+         color: #fff;
+       }
+    }
+    .logo{
+      width: 200px;
+      img{
+        width: 200px;
+        height: 200px;
+      }
+    }
+}
+/*------------------------------ footer end ---------------------*/
+
+//----------------------------- courses ------------------------------//
+#courses{
+  margin-top: 30px;
+  .mat-card{
+    @include pages-card();
+    .mat-toolbar{
+      background: $dialog-header-color;
+    }
+  }
+  .addButton{
+  @include add-button();
+  }
+  .editButton{
+   @include edit-button();
+  }
+  .deleteButton{
+  @include delete-button();
+  }
+
+}
+/*----------------------------- end courses -------------------------*/
+
+//-------------------------------students ----------------------//
+
+#students{
+  margin-top: 30px;
+  .mat-card{
+    @include pages-card();
+    .mat-toolbar{
+      background: $dialog-header-color;
+    }
+  }
+  .addButton{
+   @include add-button();
+  }
+  .editButton{
+   @include edit-button();
+  }
+  .deleteButton{
+   @include delete-button();
+  }
+}
+/*-------------------------- end students ----------------------*/
+
+//--------------------------- subjects --------------------------------//
+#subjects{
+  margin-top: 30px;
+  .mat-card{
+    @include pages-card();
+    .mat-toolbar{
+      background: $dialog-header-color;
+    }
+  }
+  .addButton{
+    @include add-button();
+  }
+  .editButton{
+   @include edit-button();
+  }
+  .deleteButton{
+   @include delete-button();
+  }
+}
+
+/*-----------------------------end subjects ---------------------------*/
+
+//--------------------------- teachers --------------------------------//
+#teachers{
+  margin-top: 30px;
+  .mat-card{
+    @include pages-card();
+    .mat-toolbar{
+      background: $dialog-header-color;
+    }
+  }
+  .addButton{
+    @include add-button();
+  }
+  .editButton{
+   @include edit-button();
+  }
+  .deleteButton{
+   @include delete-button();
+  }
+}
+
+/*-----------------------------end subjects ---------------------------*/
+
+//-------------------------- All dialogs forms--------------------------//
+.dialog{
+  text-align: center;
+  .mat-toolbar{
+    background-color: $dialog-header-color;
+  }
+  .close-button{
+    float: right;
+    top:-80px;
+    right:-15px;
+    color: $buttons-background;
+
+  }
+  .close-icon {
+    transition: 1s ease-in-out;
+    color: $buttons-background;
+  }
+  .close-icon:hover {
+    transform: rotate(180deg);
+  }
+  .mat-raised-button{
+    background-color: $buttons-background;
+    color: $buttons-text-color;
+    border-radius: $buttons-radius;
+    box-shadow: $shadow-color;
+    &:hover{
+      background-color:$buttons-background-hover-color ;
+      color: $buttons-hover-text-color;
+    }
+  }
+  .mat-form-field{
+    width: 100%;
+    margin-top: 30px;
+  }
+}
+/*--------------------------- ddialog end ----------------------------*/
+
+//-------------------------- pages-header ----------------------------//
+.content-header{
+  @include pages-header(); 
+  }
+  
+/*---------------------------end pages-header -------------------------*/
+
+
+

@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "8d33ae70-daf3-454d-b10b-04611bf0ffbb": {
+      "ProjectGuid": "8d33ae70-daf3-454d-b10b-04611bf0ffbb",
+      "DisplayName": "student_management",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

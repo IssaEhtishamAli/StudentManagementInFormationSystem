@@ -1,0 +1,13 @@
+<div class="control-section" style="margin-top: 70px;">
+	<ejs-schedule cssClass='schedule-bychild' width='100%' height='600px' [group]="group" [currentView]="currentView"
+		[selectedDate]="selectedDate" [workHours]="workHours" [eventSettings]="eventSettings">
+		<e-resources>
+			<e-resource field='ProjectId' title='Choose Project' name='Projects'
+				[dataSource]='projectResourceDataSource' textField='text' idField='id' colorField='color'>
+			</e-resource>
+			<e-resource field='CategoryId' title='Category' name='Categories' [dataSource]='categoryResourceDataSource'
+				[allowMultiple]='allowMultiple' textField='text' idField='id' colorField='color'>
+			</e-resource>
+		</e-resources>
+	</ejs-schedule>
+</div>

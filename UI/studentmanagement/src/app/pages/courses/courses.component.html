@@ -1,0 +1,155 @@
+<mat-toolbar class="content-header">
+  <h1>Courses</h1>
+</mat-toolbar>
+<section id="courses" *ngIf="agGridHide">
+    <mat-card>
+      <mat-toolbar>
+          <mat-toolbar-row>
+              <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+                <ul fxLayout="row" fxLayoutGap="20px">
+                  <li>
+                    <button mat-raised-button  (click)="addCoursesDialog()" class="addButton">
+                      <mat-icon >add</mat-icon>
+                      Add Course</button>
+                  </li>
+                  <li>
+                    <button mat-raised-button  (click)="editDialog(secondDialog)" class="editButton">
+                      <mat-icon>edit</mat-icon>
+                      Edit Course</button>
+                  </li>
+                  <li>
+                    <button  mat-raised-button (click)="delete()" class="deleteButton">
+                      <mat-icon>delete</mat-icon>
+                      Delete Course</button>
+                  </li>
+                </ul>
+              </div>
+    </mat-toolbar-row>
+      </mat-toolbar>
+      <mat-card-content>
+        <ag-grid-angular 
+        style="width: 100%; height: 500px;"
+        class="ag-theme-alpine"
+         (gridReady)="onGridReady($event)"  
+        [columnDefs]="columnDefs"
+        [defaultColDef]="defaultColDef"
+        [rowSelection]="rowSelection"
+        [rowData]="courses"
+        [pagination]="true"
+        [paginationPageSize]="paginationPageSize">
+      </ag-grid-angular>  
+      </mat-card-content>
+    </mat-card>
+    </section>
+    <!---------------------------Edit course registration------------------>
+<section id="coursesEditDialog">
+    <ng-template #Dialog>
+        <div  class="dialog">
+          <mat-toolbar>
+              <div mat-dialog-title>
+                  <h1 align="center">Edit Course</h1>
+              </div>    
+          </mat-toolbar>
+          <button mat-icon-button class="close-button" [mat-dialog-close]="true">
+            <mat-icon class="close-icon" >close</mat-icon>
+          </button>    
+          <form action=""  #updateEditCourseForm="ngForm" (ngSubmit)="editCourseRegister(updateEditCourseForm.value)" >
+              <mat-dialog-content>
+          <div fxLayout="row" fxLayoutGap="20px">
+              <div fxLayout="column" fxFlex="35">
+              <mat-form-field>
+                  <mat-select  [(ngModel)]="teacher_id" name ="teacher_id" (selectionChange) ="onTeacherOptionSelected($event.value)" placeholder="Teacher name">
+                      <mat-option *ngFor="let teach of teachers " [value]="teach.id">
+                        {{teach.teacher_name}}
+                      </mat-option>
+                    </mat-select>
+              </mat-form-field>
+             </div> 
+             <div fxLayout="column" fxFlex="35">
+              <mat-form-field >
+                  <mat-select  [(ngModel)]="subject_id" name ="subject_id" (selectionChange) ="onTeacherOptionSelected($event.value)" placeholder="Subject name">
+                  <mat-option *ngFor="let subj of subjects " [value]="subj.id">
+                      {{subj.subject_name}}
+                    </mat-option>
+                  </mat-select>
+              </mat-form-field>
+             </div>
+             <div fxLayout="column" fxFlex="30">
+              <mat-form-field >
+                  <mat-select  [(ngModel)]="student_id" name="student_id" (selectionChange) ="onTeacherOptionSelected($event.value)" placeholder="Student name">
+                      <mat-option *ngFor="let std of students " [value]="std.id" >
+                          {{std.full_name}}
+                        </mat-option>
+                      </mat-select>
+              </mat-form-field>
+             </div>
+          </div>
+              </mat-dialog-content>
+              <mat-dialog-actions align="center">
+                  <button mat-raised-button class="editCourseButton">Edit Course</button>
+              </mat-dialog-actions>
+          </form>
+      </div>     
+    </ng-template>
+  </section>
+  <!--------------------------------------add courses --------------------------------------->
+  <section style="margin-top: 20px;" *ngIf="courseForm">
+    <mat-accordion>
+      <mat-expansion-panel  [expanded]="step === 0" (opened)="setStep(0)" >
+  <mat-expansion-panel-header>
+  <mat-panel-title >
+    Course Information
+  </mat-panel-title>
+  <mat-panel-description>
+  </mat-panel-description>
+  </mat-expansion-panel-header>
+    <div  class="dialog">
+        <mat-toolbar>
+            <div mat-dialog-title>
+                <h1 align="center">Course Registration</h1>
+            </div>    
+        </mat-toolbar>
+        <form action="" [formGroup]="reGisterCourseForm" (ngSubmit)="reGisterCourse()">
+            <mat-dialog-content>
+        <div fxLayout="row" fxLayoutGap="20px">
+
+           <div fxLayout="column" fxFlex="35">
+            <mat-form-field>
+                <mat-select formControlName="teacher_id" placeholder="Teacher Name">
+                    <mat-option *ngFor="let teach of teachers " [value]="teach.id">
+                      {{teach.teacher_name}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="reGisterCourseForm.get('teacher_id').errors?.required">Teacher name is required</mat-error>
+            </mat-form-field>
+           </div>
+           <div fxLayout="column" fxFlex="35">
+            <mat-form-field >
+                <mat-select formControlName="subject_id" placeholder="Subject Name">
+                <mat-option *ngFor="let subj of subjects " [value]="subj.id">
+                    {{subj.subject_name}}
+                  </mat-option>
+                </mat-select>
+              <mat-error *ngIf="reGisterCourseForm.get('subject_id').errors?.required">Subject name is required</mat-error>
+            </mat-form-field>
+           </div>
+           <div fxLayout="column" fxFlex="30">
+            <mat-form-field >
+                <mat-select formControlName="student_id" placeholder="Student Name">
+                    <mat-option *ngFor="let std of students " [value]="std.id" >
+                        {{std.full_name}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="reGisterCourseForm.get('student_id').errors?.required">Student name is required</mat-error>
+            </mat-form-field>
+           </div>
+        </div>
+            </mat-dialog-content>
+            <mat-dialog-actions align="center">
+                <button mat-raised-button >Register Course</button>
+            </mat-dialog-actions>
+        </form>
+      </div> 
+    </mat-expansion-panel>
+      </mat-accordion>  
+    </section>

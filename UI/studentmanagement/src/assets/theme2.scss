@@ -1,0 +1,82 @@
+//-------------------------------------Login ---------------------------//
+$background-img: #ff6b6b;
+$img-text-color: #fff;
+$fb-btn: #3b5998;
+$twitter-btn: #ff6b6b;
+$login-card-color: #ff6b6b;
+$breakpoint-laptop: 992px;
+$breakpoint-tablet: 768px;
+$breakpoint-mobile: 600px;
+//--------------------------Color scheme--------------------------------//
+$theme-background:linear-gradient(132deg,#556270 5%,  #ff6b6b 100%);
+$header-background:linear-gradient(132deg, #556270 5%,  #ff6b6b 100%);
+$footer-background:linear-gradient(132deg, #556270 5%,  #ff6b6b 100%);
+//---------------------- buttons color ---------------------//
+$buttons-background:#ff6b6b;
+$buttons-background-hover-color:#556270;
+$buttons-text-color:#000;
+$buttons-hover-text-color:#fff;
+$buttons-radius:50px;
+/*------------------------ end buttons ---------------------*/
+$card-background-color:white;
+$sidenav-background-color:#ff6b6b;
+$sidenav-list-hover-background-color:#556270;
+// $footer-background-color:$header-background;
+$icons-color:#000;
+$login-icon-color:#000;
+$icons-hover-color:#fff;
+$dialog-header-color:#fff;
+$text-hover-color:#fff;
+$text-color:#fff;
+$text-active-color:#fff;
+$shadow-color:rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+@mixin pages-header {
+  margin-top: 50px;
+  background: #fff;
+  box-shadow: $shadow-color;
+  height: 35px;
+  // position: fixed;
+  // top: 10px;
+  // z-index: 20;
+}
+@mixin add-button {
+  background-color: $buttons-background;
+  color: $buttons-text-color;
+  border-radius: $buttons-radius;
+  &:hover{
+    .mat-icon{
+      color: $icons-hover-color;
+    }
+    color: $buttons-hover-text-color;
+    background: $buttons-background-hover-color;
+  }
+}
+@mixin edit-button {
+    background-color: $buttons-background;
+    color: $buttons-text-color;
+    border-radius: $buttons-radius;
+    &:hover{
+      .mat-icon{
+        color: $icons-hover-color;
+      }
+      color: $buttons-hover-text-color;
+      background: $buttons-background-hover-color;
+    }
+  }
+
+@mixin  delete-button {
+  background-color: $buttons-background;
+    color: $buttons-text-color;
+    border-radius: $buttons-radius;
+    &:hover{
+      .mat-icon{
+        color: $icons-hover-color;
+      }
+      color: $buttons-hover-text-color;
+      background: $buttons-background-hover-color;
+    }
+}
+@mixin  pages-card {
+  width: 100%;
+  box-shadow: $shadow-color;
+}
