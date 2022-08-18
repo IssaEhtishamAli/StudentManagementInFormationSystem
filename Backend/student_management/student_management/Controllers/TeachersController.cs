@@ -18,45 +18,151 @@ namespace student_management.Controllers
         {
             _teacherRepositriy = teacherRepositriy;
         }
-
        [HttpGet]
-       public async Task<ActionResult<Teacher>> GetTeachers()
+       public async Task<object> GetTeachers()
         {
-            return Ok(await _teacherRepositriy.GetTeachers());
-        }
-        [HttpGet("teacher")]
-        public async Task<ActionResult<Teacher>> GetTeacher(int id)
-        {
-            var result = await _teacherRepositriy.GetTeacher(id);
-            if (result ==null)
+            try
             {
-                return NotFound();
+                var _data = await _teacherRepositriy.GetTeachers();
+                var modl = new
+                {
+                    statusCode = 200,
+                    message = "Teachers get sucessfully",
+                    result = _data
+                };
+                if (_data == null)
+                {
+                    var model = new
+                    {
+                        statusCode = 404,
+                        message = "Record not found"
+                    };
+                    return (model);
+                }
+                return Ok(modl);
             }
-            return result;
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error in retriving Data from Database");
+            }
+        }
+        [HttpGet("{id:int}")]
+        public async Task<object> GetTeacher(int Id)
+        {
+            try
+            {
+                List<object> gettd = new List<object>();
+                var _data = await _teacherRepositriy.GetTeacher(Id);
+                if(_data != null)
+                {
+                    gettd.Add(_data);
+                    var modl = new
+                    {
+                        statusCode = 200,
+                        message = "Teacher get sucessfully",
+                        result = gettd
+                    };
+                    return Ok(modl);
+                }
+                if (_data == null)
+                {
+                    var model = new
+                    {
+                        statusCode = 404,
+                        message = "Record not found"
+                    };
+                    return (model);
+                }
+                return Ok();
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error in retriving Data from Database");
+            }
         }
         [HttpPost]
-        public async Task<ActionResult<string>> PostTeacher(Teacher teacher)
+        public async Task<object> PostTeacher(Teacher teacher)
         {
-            return await _teacherRepositriy.AddTeacher(teacher);
+            try
+            {
+                var _data = await _teacherRepositriy.AddTeacher(teacher);
+                var modl = new
+                {
+                    statusCode = 200,
+                    message = "Teacher add sucessfully",
+                    result = _data
+                };
+                if (_data == null)
+                {
+                    var model = new
+                    {
+                        statusCode = 404,
+                        message = "Record not found"
+                    };
+                    return (model);
+                }
+                return Ok(modl);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error in retriving Data from Database");
+            }
         }
         [HttpPut("{id:int}")]
-        public async Task<ActionResult<string>> UpdateTeacher(int id,Teacher teacher)
+        public async Task<object> UpdateTeacher(Teacher teacher)
         {
-             await _teacherRepositriy.GetTeacher(id);
-            return await _teacherRepositriy.UpdateTeacher(teacher);
+            try
+            {
+                var _data = await _teacherRepositriy.UpdateTeacher(teacher);
+                var modl = new
+                {
+                    statusCode = 200,
+                    message = "Teacher edit sucessfully",
+                    result = _data
+                };
+                if (_data == null)
+                {
+                    var model = new
+                    {
+                        statusCode = 404,
+                        message = "Record not found"
+                    };
+                    return (model);
+                }
+                return Ok(modl);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error in retriving Data from Database");
+            }
         }
         [HttpDelete("{id:int}")]
-        public async Task<ActionResult<Teacher>> DeleteTeacher(int id)
+        public async Task<object> DeleteTeacher(int id)
         {
-            await _teacherRepositriy.GetTeacher(id);
-            return await _teacherRepositriy.DeleteTeacher(id);
+            try
+            {
+                var _data = await _teacherRepositriy.DeleteTeacher(id);
+                var modl = new
+                {
+                    statusCode = 200,
+                    message = "Teacher delete sucessfully",
+                    result = _data
+                };
+                if (_data == null)
+                {
+                    var model = new
+                    {
+                        statusCode = 404,
+                        message = "Record not found"
+                    };
+                    return (model);
+                }
+                return Ok(modl);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error in retriving Data from Database");
+            }
         }
-        [HttpGet("{search}") ]
-        public async Task<ActionResult<Teacher>> SearchTeacher(string name)
-        {
-             await _teacherRepositriy.SearchTeaher(name);
-            return NotFound();
-        }
-
     }
 }

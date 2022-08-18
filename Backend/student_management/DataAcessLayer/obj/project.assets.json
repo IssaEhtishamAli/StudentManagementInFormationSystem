@@ -532,11 +532,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Asp_Net_Core Projects\\student_management\\DataAcessLayer\\DataAcessLayer.csproj",
+      "projectUniqueName": "C:\\Users\\Hp\\Desktop\\New folder (2)\\StudentManagementInFormationSystem\\Backend\\student_management\\DataAcessLayer\\DataAcessLayer.csproj",
       "projectName": "DataAcessLayer",
-      "projectPath": "E:\\Asp_Net_Core Projects\\student_management\\DataAcessLayer\\DataAcessLayer.csproj",
+      "projectPath": "C:\\Users\\Hp\\Desktop\\New folder (2)\\StudentManagementInFormationSystem\\Backend\\student_management\\DataAcessLayer\\DataAcessLayer.csproj",
       "packagesPath": "C:\\Users\\Hp\\.nuget\\packages\\",
-      "outputPath": "E:\\Asp_Net_Core Projects\\student_management\\DataAcessLayer\\obj\\",
+      "outputPath": "C:\\Users\\Hp\\Desktop\\New folder (2)\\StudentManagementInFormationSystem\\Backend\\student_management\\DataAcessLayer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -591,7 +591,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -12,7 +12,7 @@ namespace DataAcessLayer
         public string address { get; set; }
         public string description { get; set; }
         public string contact_no { get; set; }
-
+        public int user_id { get; set; }
 
     }
 }

@@ -15,7 +15,7 @@ namespace student_management.Repositries
         {
             _Context = Context;
         }
-        public async Task<List<subjects>> GetSubjects()
+        public async Task<object> GetSubjects()
         {
             try
             {
@@ -28,12 +28,10 @@ namespace student_management.Repositries
             }
             catch (Exception ex)
             {
-
-                throw;
+                return ex.Message;
             }
         }
-
-        public async Task<subjects> GetSubject(int id)
+        public async Task<object> GetSubject(int id)
         {
             try
             {
@@ -42,11 +40,11 @@ namespace student_management.Repositries
             catch (Exception ex)
             {
 
-                throw;
+                return ex.Message;
             }
         }
 
-        public async Task<string> AddSubject(subjects sr)
+        public async Task<object> AddSubject(subjects sr)
         {
             try
             {
@@ -56,20 +54,17 @@ namespace student_management.Repositries
             }
             catch (Exception ex)
             {
-
                 return ex.Message;
             }
         }
-        public async Task<string> UpdateSubject(subjects sr)
+        public async Task<object> UpdateSubject(subjects sr)
         {
             try
             {
                 var result = await _Context.subjects.FirstOrDefaultAsync(a => a.id == sr.id);
                 if (result != null)
                 {
-
                     result.subject_name = sr.subject_name;
-
                     await _Context.SaveChangesAsync();
                     return "student updated sucessfully";
                 }
@@ -77,12 +72,10 @@ namespace student_management.Repositries
             }
             catch (Exception ex)
             {
-
                 return ex.Message;
             }
         }
-
-        public async Task<subjects> DeleteSubject(int Id)
+        public async Task<object> DeleteSubject(int Id)
         {
             try
             {
@@ -97,22 +90,8 @@ namespace student_management.Repositries
             }
             catch (Exception ex)
             {
-
-                throw;
+                return ex.Message;
             }
-
         }
-       
-        public async Task<IEnumerable<subjects>> SearchSubject(string name)
-        {
-            IQueryable<subjects> query = _Context.subjects;
-            if (!string.IsNullOrEmpty(name))
-            {
-                query = query.Where(a => a.subject_name.Contains(name));
-            }
-            return await query.ToListAsync();
-        }
-
-       
     }
 }

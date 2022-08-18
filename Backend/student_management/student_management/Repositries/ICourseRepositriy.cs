@@ -9,9 +9,9 @@ namespace student_management.Repositries
     public interface ICourseRepositriy
     {
         Task<object> GetCourses();
-        Task<courses> GetCourse(int Id);
-        Task<string> AddCourse(courses cr);
-        Task<string> UpdateCourse(courses cr);
-        Task<courses> DeleteCourse(int Id);
+        Task<object> GetCourse(int Id);
+        Task<object> AddCourse(courses cr);
+        Task<object> UpdateCourse(courses cr);
+        Task<object> DeleteCourse(int Id);
     }
 }

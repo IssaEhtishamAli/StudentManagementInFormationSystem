@@ -13,7 +13,7 @@ namespace student_management.Controllers
     {
         public string Index()
         {
-            return "This is Index action method of StudentController";
+            return "Welcome to the Student Management Information System Application Programing Interface";
         }
     }
 }

@@ -19,17 +19,10 @@ namespace student_management.Repositries
         {
             try
             {
-                //var result = await _Context.courses.ToListAsync();
                 var result = (from _course in _Context.courses
-                                 //join _teacher in _Context.teacher on _course.teacher_id equals _teacher.id into teacherDetail
-                                 //join _student in _Context.Student on _course.student_id equals _student.id into studentDetail
-                                 //from t in teacherDetail.DefaultIfEmpty()
-                                 //from s in studentDetail.DefaultIfEmpty()
                              join _teacher in _Context.teacher on _course.teacher_id equals _teacher.id 
                              join _student in _Context.Student on _course.student_id equals _student.id
                              join _subject in _Context.subjects on _course.subject_id equals _subject.id
-                              //from t in teacherDetail.DefaultIfEmpty()
-                              //from s in studentDetail.DefaultIfEmpty()
                               select new
                                 {
                                     id = _course.id,
@@ -39,8 +32,6 @@ namespace student_management.Repositries
                                     student_name = _student.full_name,
                                     subject_id = _subject.id,
                                     subject_name = _subject.subject_name
-
-
                                 }).Distinct().ToList();
                 if (result !=null)
                 {
@@ -50,18 +41,13 @@ namespace student_management.Repositries
                 {
                     return null;
                 }
-                
-                
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                return ex.Message;
             }
         }
-
-        
-        public async Task<courses> GetCourse(int id)
+        public async Task<object> GetCourse(int id)
         {
             try
             {
@@ -69,12 +55,10 @@ namespace student_management.Repositries
             }
             catch (Exception ex)
             {
-
-                throw;
+                return ex.Message;
             }
         }
-
-        public async Task<string> AddCourse(courses cr)
+        public async Task<object> AddCourse(courses cr)
         {
             try
             {
@@ -84,18 +68,16 @@ namespace student_management.Repositries
             }
             catch (Exception ex)
             {
-
                 return ex.Message;
             }
         }
-        public async Task<string> UpdateCourse(courses cr)
+        public async Task<object> UpdateCourse(courses cr)
         {
             try
             {
                 var result = await _Context.courses.FirstOrDefaultAsync(a => a.id == cr.id);
                 if (result != null)
                 {
-
                     result.teacher_id = cr.teacher_id;
                     result.subject_id = cr.subject_id;
                     result.student_id = cr.student_id;
@@ -106,12 +88,10 @@ namespace student_management.Repositries
             }
             catch (Exception ex)
             {
-
                 return ex.Message;
             }
         }
-
-        public async Task<courses> DeleteCourse(int Id)
+        public async Task<object> DeleteCourse(int Id)
         {
             try
             {
@@ -124,15 +104,10 @@ namespace student_management.Repositries
                 }
                 return null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                return ex.Message;
             }
-
         }
-
-
-
     }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Asp_Net_Core Projects\\student_management\\student_management\\student_management.csproj": {}
+    "C:\\Users\\Hp\\Desktop\\New folder (2)\\StudentManagementInFormationSystem\\Backend\\student_management\\student_management\\student_management.csproj": {}
   },
   "projects": {
-    "E:\\Asp_Net_Core Projects\\student_management\\DataAcessLayer\\DataAcessLayer.csproj": {
+    "C:\\Users\\Hp\\Desktop\\New folder (2)\\StudentManagementInFormationSystem\\Backend\\student_management\\DataAcessLayer\\DataAcessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Asp_Net_Core Projects\\student_management\\DataAcessLayer\\DataAcessLayer.csproj",
+        "projectUniqueName": "C:\\Users\\Hp\\Desktop\\New folder (2)\\StudentManagementInFormationSystem\\Backend\\student_management\\DataAcessLayer\\DataAcessLayer.csproj",
         "projectName": "DataAcessLayer",
-        "projectPath": "E:\\Asp_Net_Core Projects\\student_management\\DataAcessLayer\\DataAcessLayer.csproj",
+        "projectPath": "C:\\Users\\Hp\\Desktop\\New folder (2)\\StudentManagementInFormationSystem\\Backend\\student_management\\DataAcessLayer\\DataAcessLayer.csproj",
         "packagesPath": "C:\\Users\\Hp\\.nuget\\packages\\",
-        "outputPath": "E:\\Asp_Net_Core Projects\\student_management\\DataAcessLayer\\obj\\",
+        "outputPath": "C:\\Users\\Hp\\Desktop\\New folder (2)\\StudentManagementInFormationSystem\\Backend\\student_management\\DataAcessLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -66,18 +66,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Asp_Net_Core Projects\\student_management\\student_management\\student_management.csproj": {
+    "C:\\Users\\Hp\\Desktop\\New folder (2)\\StudentManagementInFormationSystem\\Backend\\student_management\\student_management\\student_management.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Asp_Net_Core Projects\\student_management\\student_management\\student_management.csproj",
+        "projectUniqueName": "C:\\Users\\Hp\\Desktop\\New folder (2)\\StudentManagementInFormationSystem\\Backend\\student_management\\student_management\\student_management.csproj",
         "projectName": "student_management",
-        "projectPath": "E:\\Asp_Net_Core Projects\\student_management\\student_management\\student_management.csproj",
+        "projectPath": "C:\\Users\\Hp\\Desktop\\New folder (2)\\StudentManagementInFormationSystem\\Backend\\student_management\\student_management\\student_management.csproj",
         "packagesPath": "C:\\Users\\Hp\\.nuget\\packages\\",
-        "outputPath": "E:\\Asp_Net_Core Projects\\student_management\\student_management\\obj\\",
+        "outputPath": "C:\\Users\\Hp\\Desktop\\New folder (2)\\StudentManagementInFormationSystem\\Backend\\student_management\\student_management\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -100,8 +100,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "E:\\Asp_Net_Core Projects\\student_management\\DataAcessLayer\\DataAcessLayer.csproj": {
-                "projectPath": "E:\\Asp_Net_Core Projects\\student_management\\DataAcessLayer\\DataAcessLayer.csproj"
+              "C:\\Users\\Hp\\Desktop\\New folder (2)\\StudentManagementInFormationSystem\\Backend\\student_management\\DataAcessLayer\\DataAcessLayer.csproj": {
+                "projectPath": "C:\\Users\\Hp\\Desktop\\New folder (2)\\StudentManagementInFormationSystem\\Backend\\student_management\\DataAcessLayer\\DataAcessLayer.csproj"
               }
             }
           }
@@ -153,6 +153,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.1.25, 3.1.25]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -161,7 +167,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
         }
       }
     }

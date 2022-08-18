@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uWQzqEwrpAe3CQZYw7B6PTzmxaQEK1jphAyx4kRinCRZzBgiAoS/lNWEdjDUpqXtSoex0iq8pOYSqbMUKHtR2g==",
+  "dgSpecHash": "z4t67eTOLTnqsS/NLdU/v1oE/lOp1ON14cEV5WQQq/71tWG/l7ySNKZu3E42OmnriGPr5rIoK0y30Mqy7MwecA==",
   "success": true,
-  "projectFilePath": "E:\\Asp_Net_Core Projects\\student_management\\DataAcessLayer\\DataAcessLayer.csproj",
+  "projectFilePath": "C:\\Users\\Hp\\Desktop\\New folder (2)\\StudentManagementInFormationSystem\\Backend\\student_management\\DataAcessLayer\\DataAcessLayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Hp\\.nuget\\packages\\microsoft.aspnetcore.cors\\2.2.0\\microsoft.aspnetcore.cors.2.2.0.nupkg.sha512",
     "C:\\Users\\Hp\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",

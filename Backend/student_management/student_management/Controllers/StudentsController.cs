@@ -12,136 +12,164 @@ namespace student_management.Controllers
 {
     [Route("api/Students")]
     [ApiController]
-
     public class StudentsController : ControllerBase
     {
         private readonly IStudentRepositriy _studentRepositriy;
-
         public StudentsController(IStudentRepositriy studentRepositriy)
         {
             _studentRepositriy = studentRepositriy;
         }
-
-       
-
+        //coments addd
+        #region students get region
+        //sasdasdsa
+        //sdasdasd
+        #endregion
         [HttpGet]
-
-        public async Task<ActionResult<student>> GetStudents()
+        public async Task<object> GetStudents()
         {
-
             try
             {
-                return Ok(await _studentRepositriy.GetStudents());
-
+                var _data = await _studentRepositriy.GetStudents();
+                var modl = new
+                {
+                    statusCode = 200,
+                    message = "Students get sucessfully",
+                    result = _data
+                };
+                if (_data == null)
+                {
+                    var model = new
+                    {
+                        statusCode=404,
+                        message="Record not found",
+                    };
+                    return (model);
+                }
+                return Ok(modl);
             }
             catch (Exception)
             {
-
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error in retriving Data from Database");
             }
         }
-        [HttpGet("student")]
-        public async Task<ActionResult<student>> GetStudent(int id)
+        [HttpGet("{id:int}")]
+        public async Task<object> GetStudent(int Id)
         {
-
-
             try
             {
-                var result = await _studentRepositriy.GetStudent(id);
-                if (result == null)
+                List<object> getStd = new List<object>();
+                var _data = await _studentRepositriy.GetStudent(Id);
+                if (getStd != null)
                 {
-                    return NotFound();
-                }
-                return result;
+                    getStd.Add(_data);
+                    var modl = new
+                    {
+                        statusCode = 200,
+                        message = "Student  get sucessfully",
+                        result = getStd
+                    };
+                    return Ok(modl);
 
+                }               
+                if (getStd == null)
+                {
+                    var model = new
+                    {
+                        statusCode = 404,
+                        message="Record not found"
+                    };
+                    return Ok(model);
+                }
+                return Ok();   
             }
             catch (Exception)
             {
-
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error in retriving Data from Database");
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error in retriving data from database");
             }
         }
-
-        [HttpPost]
-        public async Task<ActionResult<string>> CreateStudent(student std)
+        [HttpPost("addstudents")]
+        public async Task<object> CreateStudent(student std)
+        {
+            try
+            {                
+                var _data = await _studentRepositriy.AddStudent(std);
+                var modl = new
+                {
+                    statusCode=200,
+                    message="Student  added sucessfully",
+                    result= _data
+                };
+                if (_data == null)
+                {
+                    var model = new
+                    {
+                        statusCode = 404,
+                        message = "Record not found"
+                    };
+                    return(model);
+                }
+                return Ok(modl);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error in retriving data from database");
+            }
+        }
+        [HttpPut("updatestd")]
+        public async Task<object> UpdateStudent(student std)
         {
             try
             {
-                if (std == null)
+                var _data = await _studentRepositriy.UpdateStudent(std);
+                var modl = new
                 {
-                    return BadRequest();
-                }
-                var result = await _studentRepositriy.AddStudent(std);
-                return result;
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-        }
-
-        [HttpPut("{id:int}")]
-        public async Task<ActionResult<string>> UpdateStudent(int id, student std)
-        {
-            try
-            {
-                if (id != std.id)
+                  statusCode=200,
+                  message="Student  edit sucessfully",
+                  result=_data
+                };
+                if (_data == null)
                 {
-                    return BadRequest("Id MisMatch");
+                    var model = new
+                    {
+                        statusCode = 404,
+                        message = "Record not found"
+                    };
+                    return(model);
                 }
-                var employeeUpdate = await _studentRepositriy.GetStudent(id);
-                if (employeeUpdate == null)
-                {
-                    return NotFound($"Employee Id={id} not found");
-                }
-                return await _studentRepositriy.UpdateStudent(std);
+                return Ok(modl);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
-                throw ex;
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error in retriving data from database");
             }
-            return Ok();
         }
         [HttpDelete("{id:int}")]
-        public async Task<ActionResult<student>> DeleteStudent(int id)
+        public async Task<object> DeleteStudent(int id)
         {
             try
             {
-
-                var employeeDelete = await _studentRepositriy.GetStudent(id);
-                if (employeeDelete == null)
+                var _data = await _studentRepositriy.DeleteStudent(id);
+                var modl = new
                 {
-                    return NotFound($"Employee Id={id} not found");
+                  statusCode=200,
+                  message="Student  deleted sucessfully",
+                  result=_data
+                };
+                if (_data == null)
+                {
+                    //return NotFound($"Student Id={id} not found");
+                    var model = new
+                    {
+                        statusCode = 404,
+                        message = "Record not found"
+                    };
+                    return (model);
                 }
-                return await _studentRepositriy.DeleteStudent(id);
+                return Ok(modl);
             }
             catch (Exception)
             {
-
-                throw;
-            }
-            return Ok();
-        }
-
-        [HttpGet("{search}")]
-        public async Task<ActionResult<student>> Search(string name)
-        {
-            try
-            {
-
-                var result = await _studentRepositriy.Search(name);
-                if (result.Any())
-                {
-                    return Ok(result);
-                }
-                return NotFound();
-            }
-            catch (Exception)
-            {
-
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error in Retriving Data from Database");
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error in retriving data from database");
             }
         }
     }

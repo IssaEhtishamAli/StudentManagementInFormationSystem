@@ -8,11 +8,10 @@ namespace student_management.Repositries
 {
     public interface ISubjectsRepositriy
     {
-        Task<List<subjects>> GetSubjects();
-        Task<subjects> GetSubject(int Id);
-        Task<string> AddSubject(subjects sr);
-        Task<string> UpdateSubject(subjects sr);
-        Task<IEnumerable<subjects>> SearchSubject(string name);
-        Task<subjects> DeleteSubject(int Id);
+        Task<object> GetSubjects();
+        Task<object> GetSubject(int Id);
+        Task<object> AddSubject(subjects sr);
+        Task<object> UpdateSubject(subjects sr);
+        Task<object> DeleteSubject(int Id);
     }
 }

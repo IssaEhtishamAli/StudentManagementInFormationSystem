@@ -15,7 +15,7 @@ namespace student_management.Repositries
         {
            _Context = Context;
         }
-        public async Task<List<Teacher>> GetTeachers()
+        public async Task<object> GetTeachers()
         {
             try
             {
@@ -28,25 +28,46 @@ namespace student_management.Repositries
             }
             catch (Exception ex)
             {
-
-                return null;
+                return ex.Message;
             }
         }
-
-        public async Task<Teacher> GetTeacher(int id)
+        public async Task<object> GetTeacher(int Id)
         {
             try
             {
-                return await _Context.teacher.FirstOrDefaultAsync(a => a.id == id);
+                //return await _Context.teacher.FirstOrDefaultAsync(a => a.id == id);
+                var result = (
+                    from _teacher in _Context.teacher
+                    join _user in _Context.users on _teacher.user_id equals _user.id
+                    where _teacher.user_id == Id
+                    select new
+                    {
+                        id = _teacher.id,
+                        teacher_name = _teacher.teacher_name,
+                        cnic_no = _teacher.cnic_no,
+                        address = _teacher.address,
+                        description = _teacher.description,
+                        contact_no = _teacher.contact_no,
+                        user_id = _user.id,
+                        email = _user.email
+                    }
+                    ).FirstOrDefault();
+                if (result != null)
+                {
+                    return result;
+                }
+                else
+                {
+                    return null;
+                }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                return ex.Message;
             }
         }
 
-        public async Task<string> AddTeacher(Teacher teacher)
+        public async Task<object> AddTeacher(Teacher teacher)
         {
             try
             {
@@ -56,18 +77,16 @@ namespace student_management.Repositries
             }
             catch (Exception ex)
             {
-
                 return ex.Message;
             }
         }
-        public async Task<string> UpdateTeacher(Teacher teacher)
+        public async Task<object> UpdateTeacher(Teacher teacher)
         {
             try
             {
                 var result = await _Context.teacher.FirstOrDefaultAsync(a => a.id == teacher.id);
                 if (result !=null)
                 {
-
                     result.teacher_name = teacher.teacher_name;
                     result.cnic_no = teacher.cnic_no;
                     result.address = teacher.address;
@@ -80,12 +99,10 @@ namespace student_management.Repositries
             }
             catch (Exception ex)
             {
-
                 return ex.Message;
             }
         }
-
-        public async Task<Teacher> DeleteTeacher(int Id)
+        public async Task<object> DeleteTeacher(int Id)
         {
             try
             {
@@ -98,23 +115,11 @@ namespace student_management.Repositries
                 }
                 return null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                return ex.Message;
             }
        
         }
-
-        public async Task<IEnumerable<Teacher>> SearchTeaher(string name)
-        {
-            IQueryable<Teacher> query = _Context.teacher;
-            if (! string.IsNullOrEmpty(name))
-            {
-                query = query.Where(a => a.teacher_name.Contains(name));
-            }
-            return await query.ToListAsync();
-        }
-
     }
 }

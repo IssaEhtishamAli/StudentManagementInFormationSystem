@@ -11,10 +11,10 @@ D:\Asp_Net_Core Projects\student_management\DataAcessLayer\obj\Debug\netcoreapp3
 E:\Asp_Net_Core Projects\student_management\DataAcessLayer\bin\Debug\netcoreapp3.1\DataAcessLayer.deps.json
 E:\Asp_Net_Core Projects\student_management\DataAcessLayer\bin\Debug\netcoreapp3.1\DataAcessLayer.dll
 E:\Asp_Net_Core Projects\student_management\DataAcessLayer\bin\Debug\netcoreapp3.1\DataAcessLayer.pdb
-E:\Asp_Net_Core Projects\student_management\DataAcessLayer\obj\Debug\netcoreapp3.1\DataAcessLayer.csproj.AssemblyReference.cache
 E:\Asp_Net_Core Projects\student_management\DataAcessLayer\obj\Debug\netcoreapp3.1\DataAcessLayer.GeneratedMSBuildEditorConfig.editorconfig
 E:\Asp_Net_Core Projects\student_management\DataAcessLayer\obj\Debug\netcoreapp3.1\DataAcessLayer.AssemblyInfoInputs.cache
 E:\Asp_Net_Core Projects\student_management\DataAcessLayer\obj\Debug\netcoreapp3.1\DataAcessLayer.AssemblyInfo.cs
 E:\Asp_Net_Core Projects\student_management\DataAcessLayer\obj\Debug\netcoreapp3.1\DataAcessLayer.csproj.CoreCompileInputs.cache
 E:\Asp_Net_Core Projects\student_management\DataAcessLayer\obj\Debug\netcoreapp3.1\DataAcessLayer.dll
 E:\Asp_Net_Core Projects\student_management\DataAcessLayer\obj\Debug\netcoreapp3.1\DataAcessLayer.pdb
+E:\Asp_Net_Core Projects\student_management\DataAcessLayer\obj\Debug\netcoreapp3.1\DataAcessLayer.csproj.AssemblyReference.cache

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hVD24luUFvt+Bmr5WslW8CiAYH6tZhEVwCTAzlU7bI+tpdUoKcfXjeyuK/wTxE9PeRk/5LybuHvvNBJ6yEdocg==",
+  "dgSpecHash": "JJehhfeSW6bRDPd+4Uzv8G0SBXLuwCH8xNdin6WG63ifURrfzf3eRN/hjAYk/zgRNc22qP/mcfF1A9a1uD3gyw==",
   "success": true,
-  "projectFilePath": "E:\\Asp_Net_Core Projects\\student_management\\student_management\\student_management.csproj",
+  "projectFilePath": "C:\\Users\\Hp\\Desktop\\New folder (2)\\StudentManagementInFormationSystem\\Backend\\student_management\\student_management\\student_management.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Hp\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Hp\\.nuget\\packages\\microsoft.aspnetcore.cors\\2.2.0\\microsoft.aspnetcore.cors.2.2.0.nupkg.sha512",
@@ -166,7 +166,8 @@
     "C:\\Users\\Hp\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\Hp\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\Hp\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\Hp\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Users\\Hp\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\Hp\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.25\\microsoft.netcore.app.host.win-x64.3.1.25.nupkg.sha512"
   ],
   "logs": []
 }
