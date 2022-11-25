@@ -1,6 +1,6 @@
 # Student Management Information System
 * Student Management System is a system automate Student course registration and attendance system.
-* Student Management Information System is devloping in latest tools & technologies.
+* Student Management Information System is developing in latest tools & technologies.
 * Angular & Angular Material
 * Asp.Net Core
 * SQL
